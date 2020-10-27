@@ -77,5 +77,6 @@ function imageLoaded()
 	loadedImageCount++;
 	if(loadedImageCount != totalImages)
 		return;
-	
+    
+    startGameLoop();	
 }
