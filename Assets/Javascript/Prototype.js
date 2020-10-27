@@ -42,6 +42,13 @@ function userInputDown(e)
 		case 39:
 			inputManager.setRightKey(true);
 			break;
+        
+        case 38:
+			inputManager.setUpKey(true);
+			break;
+		case 40:
+			inputManager.setDownKey(true);
+			break;    
 	}
 }
 
@@ -56,5 +63,12 @@ function userInputUp(e)
 		case 39:
 			inputManager.setRightKey(false);
 			break;
+        
+        case 38:
+			inputManager.setUpKey(false);
+			break;
+		case 40:
+			inputManager.setDownKey(false);
+			break;    
 	}
 }

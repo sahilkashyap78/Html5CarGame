@@ -36,7 +36,12 @@ function Game()
         {
             road2PositionY = -gameHeight;
         }
-
+        if(inputManager.isUpPressed())
+            if(speed<=145)
+                speed+=5;
+        if(inputManager.isDownPressed())
+            if(speed>=80)
+                speed-=5;
 	}
 	
 	function draw()
