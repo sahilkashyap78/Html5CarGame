@@ -8,6 +8,7 @@ function Player()
 	this.getY = yGetter;
 	this.getW = wGetter;
 	this.getH = hGetter;
+   
 	
 	function initializer(_x, _y, _w, _h,  _imageIndex)
 	{
@@ -37,4 +38,5 @@ function Player()
 	{
 		return h;
 	}
+    
 }
