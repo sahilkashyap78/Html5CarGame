@@ -7,5 +7,5 @@ var leftEdgeOfRoad = 140;
 var rightEdgeOfRoad = 350;
 var carPositionX = 200;
 var carPositionY = 450;
-
+var carWidth = 10;
 
