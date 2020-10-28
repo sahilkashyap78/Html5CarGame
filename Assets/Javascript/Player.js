@@ -1,6 +1,7 @@
 function Player()
 {
 	var x,y,w,h;
+    var MOVEMENT = 5;
 	var imageIndex;	
 	this.init = initializer;
 
@@ -17,6 +18,23 @@ function Player()
 		w = _w;
 		h = _h;
 		imageIndex = _imageIndex;
+	}
+    
+    function left()
+	{
+		x = x - MOVEMENT;
+		//HARDIK: RESTRICTING PADDLE INSIDE GAME-PLAY FROM LEFT-EDGE
+		if(x < leftEdgeOfRoad)
+			x = leftEdgeOfRoad;
+	}
+
+	function right()
+	{
+		x = parseFloat(x) + parseFloat(MOVEMENT);
+		//HARDIK: RESTRICTING PADDLE INSIDE GAME-PLAY FROM RIGHT-EDGE
+		//IF X + WIDTH-OF-PADDLE GET GREATER THAN SCREEN-WIDTH THEN, WE SET X = SCREEN-WIDTH - WIDTH-OF-PADDLE
+		if(x + w > rightEdgeOfRoad)
+			x = rightEdgeOfRoad - w;
 	}
 	
 	function xGetter()
