@@ -3,7 +3,8 @@ function Game()
     var lasttime;
 	
 	this.init = initializer;
-    var speed = 100; //in pixel per second
+    var speed = 0; //in pixel per second
+    var isGameStart = false;
 	
 	function initializer()
 	{
@@ -36,12 +37,28 @@ function Game()
         {
             road2PositionY = -gameHeight;
         }
+        
         if(inputManager.isUpPressed())
-            if(speed<=145)
-                speed+=5;
+        {
+            if(isGameStart==false)
+            {
+                isGameStart=true;
+                speed=100;                    
+            }
+            if(speed<=145&&isGameStart)
+            {
+                speed+=5;        
+            }
+        }
+            
         if(inputManager.isDownPressed())
-            if(speed>=80)
+        {
+            if(speed>=80&&isGameStart)
+            {
                 speed-=5;
+            }            
+        }
+        
 	}
 	
 	function draw()
