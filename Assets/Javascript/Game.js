@@ -40,6 +40,13 @@ function Game()
             road2PositionY = -gameHeight;
         }
         
+        //process events
+		if(inputManager.isLeftPressed())
+			playerObj.moveLeft();
+		
+		if(inputManager.isRightPressed())
+			playerObj.moveRight();
+                
         if(inputManager.isUpPressed())
         {
             if(isGameStart==false)
