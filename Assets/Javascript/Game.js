@@ -1,17 +1,19 @@
 function Game()
 {
     var lasttime;
-	
+	var playerObj;
 	this.init = initializer;
     var speed = 0; //in pixel per second
     var isGameStart = false;
 	
 	function initializer()
 	{
-        lastTime = new Date().getTime();
-        setIntervalID = setInterval(gameLoop, 10);
         
-            
+        playerObj = new Player();
+		playerObj.init(carPositionX, carPositionY, allImages[PLAYER_CAR].width, allImages[PLAYER_CAR].height, PLAYER_CAR);
+        
+        lastTime = new Date().getTime();
+        setIntervalID = setInterval(gameLoop, 10);        
 	}
 	
 	function gameLoop()
@@ -67,7 +69,7 @@ function Game()
         //drawing road
 	   ctx.drawImage(allImages[GAME_BG], 0, road1PositionY);
 	   ctx.drawImage(allImages[GAME_BG], 0, road2PositionY);
-	
+	   
 		
 	}
 	
