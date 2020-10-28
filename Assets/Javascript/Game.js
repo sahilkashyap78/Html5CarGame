@@ -69,7 +69,7 @@ function Game()
         //drawing road
 	   ctx.drawImage(allImages[GAME_BG], 0, road1PositionY);
 	   ctx.drawImage(allImages[GAME_BG], 0, road2PositionY);
-	   
+	   ctx.drawImage(allImages[playerObj.getImageIndex()], playerObj.getX(), playerObj.getY());
 		
 	}
 	
