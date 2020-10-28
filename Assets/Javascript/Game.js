@@ -1,16 +1,19 @@
 function Game()
 {
     var lasttime;
-	
+	var playerObj;
 	this.init = initializer;
-    var speed = 100; //in pixel per second
+    var speed = 0; //in pixel per second
+    var isGameStart = false;
 	
 	function initializer()
 	{
-        lastTime = new Date().getTime();
-        setIntervalID = setInterval(gameLoop, 10);
         
-            
+        playerObj = new Player();
+		playerObj.init(carPositionX, carPositionY, allImages[PLAYER_CAR].width, allImages[PLAYER_CAR].height, PLAYER_CAR);
+        
+        lastTime = new Date().getTime();
+        setIntervalID = setInterval(gameLoop, 10);        
 	}
 	
 	function gameLoop()
@@ -36,12 +39,35 @@ function Game()
         {
             road2PositionY = -gameHeight;
         }
+        
+        //process events
+		if(inputManager.isLeftPressed())
+			playerObj.moveLeft();
+		
+		if(inputManager.isRightPressed())
+			playerObj.moveRight();
+                
         if(inputManager.isUpPressed())
-            if(speed<=145)
-                speed+=5;
+        {
+            if(isGameStart==false)
+            {
+                isGameStart=true;
+                speed=100;                    
+            }
+            if(speed<=145&&isGameStart)
+            {
+                speed+=5;        
+            }
+        }
+            
         if(inputManager.isDownPressed())
-            if(speed>=80)
+        {
+            if(speed>=80&&isGameStart)
+            {
                 speed-=5;
+            }            
+        }
+        
 	}
 	
 	function draw()
@@ -50,7 +76,7 @@ function Game()
         //drawing road
 	   ctx.drawImage(allImages[GAME_BG], 0, road1PositionY);
 	   ctx.drawImage(allImages[GAME_BG], 0, road2PositionY);
-	
+	   ctx.drawImage(allImages[playerObj.getImageIndex()], playerObj.getX(), playerObj.getY());
 		
 	}
 	
