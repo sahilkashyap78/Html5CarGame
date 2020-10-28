@@ -9,6 +9,11 @@ function Player()
 	this.getY = yGetter;
 	this.getW = wGetter;
 	this.getH = hGetter;
+    this.getImageIndex = imageIndexGetter;
+    
+    this.moveLeft = left;
+	this.moveRight = right;
+
 	
 	function initializer(_x, _y, _w, _h,  _imageIndex)
 	{
@@ -54,5 +59,10 @@ function Player()
 	function hGetter()
 	{
 		return h;
+	}
+    
+    function imageIndexGetter()
+	{
+		return imageIndex;
 	}
 }
