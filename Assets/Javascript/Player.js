@@ -38,7 +38,7 @@ function Player()
 		//HARDIK: RESTRICTING PADDLE INSIDE GAME-PLAY FROM RIGHT-EDGE
 		//IF X + WIDTH-OF-PADDLE GET GREATER THAN SCREEN-WIDTH THEN, WE SET X = SCREEN-WIDTH - WIDTH-OF-PADDLE
 		if(x + w > rightEdgeOfRoad)
-			x = rightEdgeOfRoad - w;
+			x = rightEdgeOfRoad - carWidth;
 	}
 	
 	function xGetter()
