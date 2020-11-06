@@ -8,4 +8,12 @@ var rightEdgeOfRoad = 350;
 var carPositionX = 200;
 var carPositionY = 450;
 var carWidth = 10;
+var GAMELOOP_CONSTANT = 10;
 
+var speed = 0; //in pixel per second
+var isGameStart = false;
+var INITIAL_VELOCITY = 100;
+var VELOCITY_CHANGE = 5;
+var UPPER_VELOCITY = 145;
+var LOWER_VELOCITY = 80;
+var MILISECOND_TO_SECONDS = 1000;

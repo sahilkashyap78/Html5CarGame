@@ -3,8 +3,7 @@ function Game()
     var lasttime;
 	var playerObj;
 	this.init = initializer;
-    var speed = 0; //in pixel per second
-    var isGameStart = false;
+    
 	
 	function initializer()
 	{
@@ -13,7 +12,7 @@ function Game()
 		playerObj.init(carPositionX, carPositionY, allImages[PLAYER_CAR].width, allImages[PLAYER_CAR].height, PLAYER_CAR);
         
         lastTime = new Date().getTime();
-        setIntervalID = setInterval(gameLoop, 10);        
+        setIntervalID = setInterval(gameLoop, GAMELOOP_CONSTANT);        
 	}
 	
 	function gameLoop()
@@ -27,9 +26,9 @@ function Game()
         var currTime = new Date().getTime(); // Let's say the current time is 9:30:35:180
 		var timeElapsed = currTime - lastTime; // So, timeElapsed will be (180 - 156) 24 ms
 		lastTime = currTime;
-        var distance = (timeElapsed / 1000) * speed;
-        road1PositionY  += distance;
-	    road2PositionY += distance;
+        var acceleration = (timeElapsed / MILISECOND_TO_SECONDS) * speed; // acceleration calculated as per the velocity
+        road1PositionY  += acceleration;
+	    road2PositionY += acceleration;
         if (road1PositionY >= gameHeight)
         {
             road1PositionY = -gameHeight;
@@ -52,19 +51,19 @@ function Game()
             if(isGameStart==false)
             {
                 isGameStart=true;
-                speed=100;                    
+                speed = INITIAL_VELOCITY;                    
             }
-            if(speed<=145&&isGameStart)
+            if(speed <= UPPER_VELOCITY && isGameStart)
             {
-                speed+=5;        
+                speed += VELOCITY_CHANGE;        
             }
         }
             
         if(inputManager.isDownPressed())
         {
-            if(speed>=80&&isGameStart)
+            if(speed >= LOWER_VELOCITY && isGameStart)
             {
-                speed-=5;
+                speed -= VELOCITY_CHANGE;
             }            
         }
         

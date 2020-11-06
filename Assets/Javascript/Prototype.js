@@ -66,9 +66,11 @@ function userInputUp(e)
         
         case 38:
 			inputManager.setUpKey(false);
+            speed = INITIAL_VELOCITY;
 			break;
 		case 40:
 			inputManager.setDownKey(false);
+            speed = INITIAL_VELOCITY;
 			break;    
 	}
 }
